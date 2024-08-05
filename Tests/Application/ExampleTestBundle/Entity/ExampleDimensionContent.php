@@ -13,6 +13,8 @@ declare(strict_types=1);
 
 namespace Sulu\Bundle\ContentBundle\Tests\Application\ExampleTestBundle\Entity;
 
+use Sulu\Bundle\ContentBundle\Content\Domain\Model\AdditionalWebspaceInterface;
+use Sulu\Bundle\ContentBundle\Content\Domain\Model\AdditionalWebspaceTrait;
 use Sulu\Bundle\ContentBundle\Content\Domain\Model\AuthorInterface;
 use Sulu\Bundle\ContentBundle\Content\Domain\Model\AuthorTrait;
 use Sulu\Bundle\ContentBundle\Content\Domain\Model\ContentRichEntityInterface;
@@ -36,7 +38,7 @@ use Sulu\Bundle\ContentBundle\Content\Domain\Model\WorkflowTrait;
 /**
  * @implements DimensionContentInterface<Example>
  */
-class ExampleDimensionContent implements DimensionContentInterface, ExcerptInterface, SeoInterface, TemplateInterface, RoutableInterface, WorkflowInterface, AuthorInterface, WebspaceInterface, ShadowInterface
+class ExampleDimensionContent implements DimensionContentInterface, ExcerptInterface, SeoInterface, TemplateInterface, RoutableInterface, WorkflowInterface, AuthorInterface, WebspaceInterface, ShadowInterface, AdditionalWebspaceInterface
 {
     use AuthorTrait;
     use DimensionContentTrait;
@@ -48,6 +50,7 @@ class ExampleDimensionContent implements DimensionContentInterface, ExcerptInter
         setTemplateData as parentSetTemplateData;
     }
     use WebspaceTrait;
+    use AdditionalWebspaceTrait;
     use WorkflowTrait;
 
     /**

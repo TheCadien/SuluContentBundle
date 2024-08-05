@@ -19,6 +19,7 @@ use Doctrine\ORM\Mapping\Builder\ClassMetadataBuilder;
 use Doctrine\ORM\Mapping\ClassMetadataInfo;
 use Sulu\Bundle\CategoryBundle\Entity\CategoryInterface;
 use Sulu\Bundle\ContactBundle\Entity\ContactInterface;
+use Sulu\Bundle\ContentBundle\Content\Domain\Model\AdditionalWebspaceInterface;
 use Sulu\Bundle\ContentBundle\Content\Domain\Model\AuthorInterface;
 use Sulu\Bundle\ContentBundle\Content\Domain\Model\DimensionContentInterface;
 use Sulu\Bundle\ContentBundle\Content\Domain\Model\ExcerptInterface;
@@ -105,6 +106,10 @@ final class MetadataLoader
 
         if ($reflection->implementsInterface(WebspaceInterface::class)) {
             $this->addField($metadata, 'mainWebspace', 'string', ['nullable' => true]);
+        }
+
+        if ($reflection->implementsInterface(AdditionalWebspaceInterface::class)) {
+            $this->addManyToMany($event, $metadata,'foo','');
         }
 
         if ($reflection->implementsInterface(AuthorInterface::class)) {

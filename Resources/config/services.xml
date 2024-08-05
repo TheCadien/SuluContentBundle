@@ -8,6 +8,11 @@
             <tag name="doctrine.event_listener" event="loadClassMetadata" priority="100"/>
         </service>
 
+        <service id="sulu_content.schema_loader" class="Sulu\Bundle\ContentBundle\Content\Infrastructure\Doctrine\SchemaLoader">
+            <!-- Priority 100 as the MetadataLoader need to be before the ResolveTargetEntityListener of Doctrine -->
+            <tag name="doctrine.event_listener" event="postGenerateSchemaTable" priority="100"/>
+        </service>
+
         <service id="sulu_content.route_remover" class="Sulu\Bundle\ContentBundle\Content\Infrastructure\Doctrine\RouteRemover">
             <argument type="service" id="sulu_content.content_metadata_inspector"/>
             <argument type="service" id="sulu.repository.route"/>
