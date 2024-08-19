@@ -34,7 +34,6 @@ final class SchemaLoader
 
     private function addTableToSchema(Schema $schema, string $name): void
     {
-        $schema->cre
         $table = $schema->createTable($name);
 
         $table->addColumn('id', Types::BIGINT);

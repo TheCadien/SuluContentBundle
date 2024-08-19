@@ -108,10 +108,6 @@ final class MetadataLoader
             $this->addField($metadata, 'mainWebspace', 'string', ['nullable' => true]);
         }
 
-        if ($reflection->implementsInterface(AdditionalWebspaceInterface::class)) {
-            $this->addManyToMany($event, $metadata,'foo','');
-        }
-
         if ($reflection->implementsInterface(AuthorInterface::class)) {
             $this->addField($metadata, 'authored', 'datetime_immutable', ['nullable' => true]);
             $this->addManyToOne($event, $metadata, 'author', ContactInterface::class, true);
